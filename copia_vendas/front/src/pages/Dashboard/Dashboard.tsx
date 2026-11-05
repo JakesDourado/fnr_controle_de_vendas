@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { Bar } from 'react-chartjs-2'
 import 'chart.js/auto'
+import React from 'react'
+import GroupIcon from '@mui/icons-material/Group'
+import FactoryIcon from '@mui/icons-material/Factory'
+import Inventory2Icon from '@mui/icons-material/Inventory2'
 
-const Card: React.FC<{ title: string; value: number; color: string; icon: string }> = ({ title, value, color, icon }) => (
+const Card: React.FC<{ title: string; value: number; color: string; icon: React.ReactNode }> = ({ title, value, color, icon }) => (
   <div style={{
     background: '#fff', borderRadius: 10, padding: '20px 24px',
     boxShadow: '0 2px 8px #0001', borderLeft: `5px solid ${color}`,
     flex: 1, minWidth: 160,
   }}>
-    <div style={{ fontSize: 28 }}>{icon}</div>
+    <div style={{ color }}>{icon}</div>
     <div style={{ fontSize: 28, fontWeight: 700, color }}>{value}</div>
     <div style={{ fontSize: 14, color: '#777', marginTop: 4 }}>{title}</div>
   </div>
@@ -69,9 +73,9 @@ const Dashboard: React.FC = () => {
       <h2 style={{ marginBottom: 24 }}>Dashboard</h2>
 
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 32 }}>
-        <Card title="Clientes" value={clientes} color="#1976d2" icon="👥" />
-        <Card title="Fornecedores" value={fornecedores} color="#388e3c" icon="🏭" />
-        <Card title="Produtos" value={produtos} color="#f57c00" icon="📦" />
+        <Card title="Clientes" value={clientes} color="#1976d2" icon={<GroupIcon sx={{ fontSize: 32 }} />} />
+        <Card title="Fornecedores" value={fornecedores} color="#388e3c" icon={<FactoryIcon sx={{ fontSize: 32 }} />} />
+        <Card title="Produtos" value={produtos} color="#f57c00" icon={<Inventory2Icon sx={{ fontSize: 32 }} />} />
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>

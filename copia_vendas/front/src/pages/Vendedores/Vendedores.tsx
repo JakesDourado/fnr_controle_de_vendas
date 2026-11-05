@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import api from '../../services/api'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 
 const Vendedores: React.FC = () => {
   const [lista, setLista] = useState<any[]>([])
@@ -56,7 +57,7 @@ const Vendedores: React.FC = () => {
                 <td style={tdStyle}>{item.email}</td>
                 <td style={tdStyle}>{item.telefone}</td>
                 <td style={tdStyle}>{item.descricao}</td>
-                <td style={tdStyle}>{item.isAdmin ? '✅' : '—'}</td>
+                <td style={tdStyle}>{item.isAdmin ? <CheckCircleIcon sx={{ fontSize: 18, color: "#43a047" }} /> : "—"}</td>
                 <td style={{ ...tdStyle, display: 'flex', gap: 6 }}>
                   <button onClick={() => openModal(item)} style={btnEdit}>Editar</button>
                   <button onClick={() => toggleAtivo(item)} style={item.ativo ? btnDanger : btnSuccess}>{item.ativo ? 'Inativar' : 'Reativar'}</button>

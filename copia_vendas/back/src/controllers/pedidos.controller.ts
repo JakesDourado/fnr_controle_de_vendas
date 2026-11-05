@@ -150,7 +150,7 @@ export async function marcarEntregue(req: AuthRequest, res: Response): Promise<v
   }
   await prisma.pedido.update({
     where: { id: Number(id) },
-    data: { entregue: true, dtEntrega: new Date() },
+    data: { entregue: true },
   })
   res.json({ ok: true })
 }

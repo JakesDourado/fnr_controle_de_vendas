@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import api from '../../services/api'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import CheckIcon from '@mui/icons-material/Check'
+import CloseIcon from '@mui/icons-material/Close'
 
 const Agenda: React.FC = () => {
   const [lista, setLista] = useState<any[]>([])
@@ -60,12 +63,12 @@ const Agenda: React.FC = () => {
                 <td style={tdStyle}>{item.cliente?.nome}</td>
                 <td style={tdStyle}>{item.vendedor?.nome}</td>
                 <td style={tdStyle}>{item.observacao}</td>
-                <td style={tdStyle}>{item.repetirMensalmente ? '✅' : '—'}</td>
+                <td style={tdStyle}>{item.repetirMensalmente ? <CheckCircleIcon sx={{ fontSize: 18, color: "#43a047" }} /> : "—"}</td>
                 <td style={tdStyle}><span style={{ color: item.realizado ? '#43a047' : '#f57c00', fontWeight: 600 }}>{item.realizado ? 'Sim' : 'Não'}</span></td>
                 <td style={{ ...tdStyle, display: 'flex', gap: 4 }}>
                   <button onClick={() => openModal(item)} style={btnEdit}>Editar</button>
-                  {!item.realizado && <button onClick={() => marcarRealizado(item.id)} style={btnSuccess}>✓ Realizar</button>}
-                  <button onClick={() => excluir(item.id)} style={btnDanger}>✕</button>
+                  {!item.realizado && <button onClick={() => marcarRealizado(item.id)} style={{ ...btnSuccess, display: "flex", alignItems: "center", gap: 4 }}><CheckIcon sx={{ fontSize: 16 }} /> Realizar</button>}
+                  <button onClick={() => excluir(item.id)} style={btnDanger}><CloseIcon sx={{ fontSize: 16 }} /></button>
                 </td>
               </tr>
             ))}</tbody>

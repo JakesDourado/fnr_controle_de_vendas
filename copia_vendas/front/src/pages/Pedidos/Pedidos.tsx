@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import api from '../../services/api'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import ScheduleIcon from '@mui/icons-material/Schedule'
+import CloseIcon from '@mui/icons-material/Close'
 
 const Pedidos: React.FC = () => {
   const [lista, setLista] = useState<any[]>([])
@@ -67,7 +70,9 @@ const Pedidos: React.FC = () => {
       if (editing) await api.put(`/pedidos/${editing.id}`, payload)
       else await api.post('/pedidos', payload)
       setShowModal(false); fetchAll()
-    } catch (e: any) { setErro(e.response?.data?.detail || 'Erro ao salvar') }
+    } catch (e: any) {
+      setErro(e.response?.status === 409 ? 'Erro ao salvar o pedido. Tente novamente.' : (e.response?.data?.detail || 'Erro ao salvar'))
+    }
   }
 
   const marcarEntregue = async (id: number) => { await api.post(`/pedidos/${id}/entregue`); fetchAll() }
@@ -100,7 +105,7 @@ const Pedidos: React.FC = () => {
                 <td style={tdStyle}>{item.vendedor?.nome}</td>
                 <td style={tdStyle}>{item.dtPedido ? new Date(item.dtPedido).toLocaleDateString('pt-BR') : '-'}</td>
                 <td style={tdStyle}>{item.dtPrevistaEntrega ? new Date(item.dtPrevistaEntrega).toLocaleDateString('pt-BR') : '-'}</td>
-                <td style={tdStyle}><span style={{ color: item.entregue ? '#43a047' : '#f57c00', fontWeight: 600 }}>{item.entregue ? '✅ Sim' : '⏳ Não'}</span></td>
+                <td style={tdStyle}><span style={{ color: item.entregue ? '#43a047' : '#f57c00', fontWeight: 600 }}>{item.entregue ? <><CheckCircleIcon sx={{ fontSize: 16, verticalAlign: "middle", mr: 0.5 }} />Sim</> : <><ScheduleIcon sx={{ fontSize: 16, verticalAlign: "middle", mr: 0.5 }} />Não</>}</span></td>
                 <td style={{ ...tdStyle, display: 'flex', gap: 4, flexWrap: 'wrap' }}>
                   <button onClick={() => openModal(item)} style={btnEdit}>Editar</button>
                   {!item.entregue && <button onClick={() => marcarEntregue(item.id)} style={{ ...btnSuccess, fontSize: 11 }}>Entregar</button>}
@@ -170,7 +175,7 @@ const Pedidos: React.FC = () => {
                     <label style={labelStyle}>Unidade</label>
                     <input value={p.unidadeMedida || ''} onChange={e => updateProduto(i, 'unidadeMedida', e.target.value)} style={inputStyle} />
                   </div>
-                  <button onClick={() => removeProduto(i)} style={{ ...btnDanger, alignSelf: 'flex-end', marginBottom: 1 }}>✕</button>
+                  <button onClick={() => removeProduto(i)} style={{ ...btnDanger, alignSelf: 'flex-end', marginBottom: 1 }}><CloseIcon sx={{ fontSize: 16 }} /></button>
                 </div>
               ))}
             </div>

@@ -21,7 +21,7 @@ const privateRoute = (component: React.ReactNode) => (
 )
 
 function App() {
-  const expirado = new Date() > new Date('2026-07-10T23:59:59')
+  const expirado = new Date() > new Date('2026-12-10T23:59:59')
   if (expirado) return <DemoExpirado />
 
   return (

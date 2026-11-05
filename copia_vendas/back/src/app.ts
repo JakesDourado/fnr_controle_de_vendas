@@ -23,10 +23,10 @@ app.use(express.urlencoded({ extended: true }))
 
 // Bloqueio de versão de demonstração
 app.use((req, res, next) => {
-  const expiracao = new Date('2026-07-10T23:59:59')
+  const expiracao = new Date('2026-12-10T23:59:59')
   if (new Date() > expiracao) {
     res.status(403).json({
-      detail: 'Esta versão de demonstração expirou em 10/07/2026. Entre em contato com o desenvolvedor.',
+      detail: 'Esta versão de demonstração expirou em 10/12/2026. Entre em contato com o desenvolvedor.',
     })
     return
   }

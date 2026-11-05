@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../../services/api'
+import Inventory2Icon from '@mui/icons-material/Inventory2'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
 const Cadastro: React.FC = () => {
   const [nome, setNome] = useState('')
@@ -49,7 +51,7 @@ const Cadastro: React.FC = () => {
         minWidth: 400, boxShadow: '0 8px 32px #0004',
       }}>
         <h1 style={{ textAlign: 'center', color: '#1976d2', marginBottom: 8, fontSize: 24 }}>
-          📦 Controle de Vendas
+          <Inventory2Icon sx={{ verticalAlign: "middle", mr: 1 }} />Controle de Vendas
         </h1>
         <p style={{ textAlign: 'center', color: '#888', marginBottom: 28, fontSize: 14 }}>
           Criar nova conta
@@ -142,7 +144,7 @@ const Cadastro: React.FC = () => {
               onClick={() => navigate('/')}
               style={{ color: '#1976d2', fontSize: 13, cursor: 'pointer', textDecoration: 'underline' }}
             >
-              ← Voltar para o login
+              <ArrowBackIcon sx={{ fontSize: 14, verticalAlign: "middle", mr: 0.5 }} /> Voltar para o login
             </span>
           </p>
         </form>

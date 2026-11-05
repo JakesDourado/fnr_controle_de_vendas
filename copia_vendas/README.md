@@ -1,9 +1,21 @@
-# 📦 FNR — Controle de Vendas
+# FNR — Controle de Vendas
 
 Sistema web de controle de vendas desenvolvido para gerenciar pedidos, clientes, fornecedores, produtos, vendedores e agenda de forma centralizada.
 
+> ## Credenciais de Acesso (ambiente didático)
+>
+> | Campo | Valor |
+> |-------|-------|
+> | **URL** | http://localhost:5173 |
+> | **Email** | `admin@vendas.com` |
+> | **Senha** | `admin123` |
+>
+> **Atenção:** Sistema destinado a **aulas de testes de software** — as credenciais são públicas propositalmente.
+>
+> **Versão de demonstração válida até 10/12/2026.**
 
-## 📋 Sumário
+
+## Sumário
 
 - [Sobre o Sistema](#sobre-o-sistema)
 - [Arquitetura](#arquitetura)
@@ -181,20 +193,21 @@ O frontend estará disponível em **http://localhost:5173**
 ## Primeiro Acesso
 
 1. Acesse **http://localhost:5173**
-2. Clique em **"Primeiro cadastro"**
-3. Preencha nome, e-mail e senha
-4. O primeiro usuário cadastrado se torna **administrador** automaticamente
-5. Faça login com as credenciais cadastradas
+2. Faça login com as credenciais padrão:
+   - **Email:** `admin@vendas.com`
+   - **Senha:** `admin123`
+3. (Opcional) Clique em **"Primeiro cadastro"** para criar um novo usuário — o primeiro usuário cadastrado se torna **administrador** automaticamente
 
-> Se o banco já tiver sido populado com o seed, utilize:
-> - **Email:** `admin@vendas.com`
-> - **Senha:** `admin123`
+> **Dica:** Se o banco estiver vazio, rode o seed para criar o usuário admin:
+> ```bash
+> cd back && npm run prisma:seed
+> ```
 
 ---
 
 ## User Stories — Funcionalidades
 
-### 🔐 Autenticação
+### Autenticação
 
 | ID | Como... | Quero... | Para... |
 |----|---------|----------|---------|
@@ -205,7 +218,7 @@ O frontend estará disponível em **http://localhost:5173**
 
 ---
 
-### 📊 Dashboard
+### Dashboard
 
 | ID | Como... | Quero... | Para... |
 |----|---------|----------|---------|
@@ -215,7 +228,7 @@ O frontend estará disponível em **http://localhost:5173**
 
 ---
 
-### 👥 Clientes
+### Clientes
 
 | ID | Como... | Quero... | Para... |
 |----|---------|----------|---------|
@@ -227,7 +240,7 @@ O frontend estará disponível em **http://localhost:5173**
 
 ---
 
-### 🏭 Fornecedores
+### Fornecedores
 
 | ID | Como... | Quero... | Para... |
 |----|---------|----------|---------|
@@ -237,7 +250,7 @@ O frontend estará disponível em **http://localhost:5173**
 
 ---
 
-### 📦 Produtos
+### Produtos
 
 | ID | Como... | Quero... | Para... |
 |----|---------|----------|---------|
@@ -248,7 +261,7 @@ O frontend estará disponível em **http://localhost:5173**
 
 ---
 
-### 🗂️ Categorias
+### Categorias
 
 | ID | Como... | Quero... | Para... |
 |----|---------|----------|---------|
@@ -257,7 +270,7 @@ O frontend estará disponível em **http://localhost:5173**
 
 ---
 
-### 🛒 Pedidos
+### Pedidos
 
 | ID | Como... | Quero... | Para... |
 |----|---------|----------|---------|
@@ -271,7 +284,7 @@ O frontend estará disponível em **http://localhost:5173**
 
 ---
 
-### 🧑‍💼 Vendedores
+### Vendedores
 
 | ID | Como... | Quero... | Para... |
 |----|---------|----------|---------|
@@ -281,7 +294,7 @@ O frontend estará disponível em **http://localhost:5173**
 
 ---
 
-### 📅 Agenda
+### Agenda
 
 | ID | Como... | Quero... | Para... |
 |----|---------|----------|---------|
@@ -292,7 +305,7 @@ O frontend estará disponível em **http://localhost:5173**
 
 ---
 
-## 🔒 Observações
+## Observações
 
 - Esta é uma **versão de demonstração acadêmica**, com expiração em **10/07/2026**
 - Após a data de expiração, o sistema exibirá uma tela de encerramento e a API retornará erro `403`

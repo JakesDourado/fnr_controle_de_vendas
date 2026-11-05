@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
+import Inventory2Icon from '@mui/icons-material/Inventory2'
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('')
@@ -34,7 +35,7 @@ const Login: React.FC = () => {
         minWidth: 380, boxShadow: '0 8px 32px #0004',
       }}>
         <h1 style={{ textAlign: 'center', color: '#1976d2', marginBottom: 8, fontSize: 26 }}>
-          📦 Controle de Vendas
+          <Inventory2Icon sx={{ verticalAlign: "middle", mr: 1 }} />Controle de Vendas
         </h1>
         <p style={{ textAlign: 'center', color: '#888', marginBottom: 28, fontSize: 14 }}>
           Faça login para continuar
